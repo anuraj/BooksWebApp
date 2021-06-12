@@ -1,0 +1,22 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: bookswebapp
+services:
+- name: booksapi
+  project: BooksApi/BooksApi.csproj
+- name: booksapp
+  project: BooksApp/BooksApp.csproj
+- name: booksdb
+  image: mongo
+  bindings:
+    - port: 27017
+      connectionString: "mongodb://${host}:${port}/admin"
+  # env:
+  # - name: MONGO_INITDB_ROOT_USERNAME
+  #   value: root
+  # - name: MONGO_INITDB_ROOT_PASSWORD
+  #   value: example

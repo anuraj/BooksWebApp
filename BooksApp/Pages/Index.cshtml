@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form method="POST">
+    <div class="form-group">
+        <label asp-for="Book.Name"></label>
+        <input asp-for="Book.Name" class="form-control form-control-sm" />
+        <span asp-validation-for="Book.Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.Author"></label>
+        <input asp-for="Book.Author" class="form-control form-control-sm" />
+        <span asp-validation-for="Book.Author"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.Category"></label>
+        <input asp-for="Book.Category" class="form-control form-control-sm" />
+        <span asp-validation-for="Book.Category"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.Price"></label>
+        <input asp-for="Book.Price" class="form-control form-control-sm" />
+        <span asp-validation-for="Book.Price"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<hr />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <th scope="col">Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+            <tr>
+            <td>@book.Name</td>
+            <td>@book.Category</td>
+            <td>@book.Price</td>
+            <td>@book.Author</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts
+{
+<partial name="_ValidationScriptsPartial" />
+}
